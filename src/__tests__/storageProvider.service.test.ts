@@ -631,8 +631,8 @@ describe("StorageProviderService", () => {
       });
       vi.mocked(ipfsService.fetchFile).mockResolvedValueOnce(new Response("ok"));
       fetchMock
-        .mockResolvedValueOnce(jsonResponse([{ dealId: 1 }]))
-        .mockResolvedValueOnce(jsonResponse({ status: 200 }));
+        .mockResolvedValueOnce(jsonResponse([{ dealId: 1, status: "active" }]))
+        .mockResolvedValueOnce(jsonResponse({ status: 200, blockHeight: 1234 }));
 
       const { statuses } = await service.verifyArchival("QmVerify");
 
