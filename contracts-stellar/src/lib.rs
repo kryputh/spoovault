@@ -1,4 +1,4 @@
-#![no_std]
+﻿#![no_std]
 // Soroban SDK macros emit `cfg(testutils)` which newer rustc check-cfg flags.
 #![allow(unexpected_cfgs)]
 // Public contract entrypoints intentionally take many args (env + auth + payload).
@@ -52,6 +52,8 @@ pub enum UpgradeError {
     UnauthorizedAdmin = 2,
     /// The caller already approved the currently pending upgrade proposal.
     AlreadyApproved = 3,
+    /// Stored admin threshold is zero or larger than the configured admin set.
+    InvalidAdminThreshold = 4,
 }
 
 #[contracttype]
@@ -412,6 +414,16 @@ impl SpooVaultStellar {
             .unwrap_or(0)
     }
 
+    /// Returns the storage schema version recorded by the active contract.
+    /// Exposed for upgrade runbooks and smoke tests that need to verify
+    /// migration state after a Wasm replacement.
+    pub fn get_schema_version(env: Env) -> u32 {
+        env.storage()
+            .instance()
+            .get(&DataKey::SchemaVersion)
+            .unwrap_or(0)
+    }
+
     /// Propose or co-sign a Wasm code upgrade to `new_wasm_hash`.
     ///
     /// `new_wasm_hash` must already be present on the ledger (uploaded via
@@ -449,6 +461,9 @@ impl SpooVaultStellar {
             .instance()
             .get(&DataKey::AdminThreshold)
             .unwrap_or(0);
+        if threshold == 0 || threshold > admins.len() {
+            panic_with_error!(&env, UpgradeError::InvalidAdminThreshold);
+        }
 
         let mut proposal: UpgradeProposal = env
             .storage()
