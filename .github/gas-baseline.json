@@ -1,9 +1,9 @@
 {
   "version": 2,
   "compilerFingerprint": "e48f12008c88",
-  "updatedAt": "2026-08-30T13:08:58.338Z",
+  "updatedAt": "2026-08-30T16:27:02.395Z",
   "gas": {
-    "CrossChainIdentityRegistry.bindIdentity(address,string,bytes32,uint256,bytes,bytes)": 1550874,
+    "CrossChainIdentityRegistry.bindIdentity(address,string,bytes32,uint256,bytes,bytes)": 1555822,
     "ERC6551Registry.createAccount(address,uint256,address,uint256,uint256,bytes)": 131780,
     "MockEntryPoint.handleOps((address,uint256,bytes,bytes,uint256,uint256,uint256,uint256,uint256,bytes,bytes)[],address)": 254507,
     "MockSmartAccount.execute(address,uint256,bytes)": 161502,
@@ -25,8 +25,8 @@
     "SpooVault.approveAccess(uint256)": 144694,
     "SpooVault.approveAccessBLS(uint256,address[],bytes,bytes,string[])": 211828,
     "SpooVault.approveAccessDelegated(uint256,address,uint256,uint256,bytes,string)": 202220,
-    "SpooVault.approveAccessDelegated(uint256,address,uint256,uint256,bytes)": 150080,
-    "SpooVault.approveAccessFHE(uint256,bytes)": 340609,
+    "SpooVault.approveAccessDelegated(uint256,address,uint256,uint256,bytes)": 150085,
+    "SpooVault.approveAccessFHE(uint256,bytes)": 340613,
     "SpooVault.approveGuardianRemoval(uint256,address)": 99259,
     "SpooVault.approveThresholdUpdate(uint256,uint256)": 99375,
     "SpooVault.authorizeKeeperBySig(uint256,address,uint256,bytes)": 103267,
@@ -49,7 +49,7 @@
     "SpooVault.revokeDelegation(uint256)": 47412,
     "SpooVault.revokeKeeper(uint256)": 30893,
     "SpooVault.revokeKey(string,string)": 95811,
-    "SpooVault.saveGuardianSharesFHE(uint256,address[],bytes[])": 372170,
+    "SpooVault.saveGuardianSharesFHE(uint256,address[],bytes[])": 372182,
     "SpooVault.setBeneficiary(uint256,address)": 51471,
     "SpooVault.setCrossChainRevocationEnabled(uint256,bool)": 48851,
     "SpooVault.setDocumentVSSCommitments(uint256,bytes32[])": 124475,
@@ -73,6 +73,7 @@
     "SpooVault.SpooVaultAdminLogic": 1778639,
     "SpooVault.SpooVaultConsumer": 270013,
     "SpooVault.TestEd25519": 1297129,
-    "SpooVault.VDFVerifier.sol:VDFVerifier": 425293
+    "SpooVault.VDFVerifier.sol:VDFVerifier": 425293,
+    "SpooVault.ZKAccessVerifier.sol:ZKAccessVerifier": 683859
   }
 }
